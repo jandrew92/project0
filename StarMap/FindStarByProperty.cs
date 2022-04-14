@@ -8,7 +8,7 @@ public class FindStarByProperty{
         string color;
         bool exitLoop = false;
 
-        SqlConnection entry = new SqlConnection(@"server=DESKTOP-5M7ISTP\JUSTIN_INSTANCE;database=StarMapDB;User Id=" + Login.username + ";Password=" + Login.password + ";");
+        SqlConnection entry = new SqlConnection(Login.connection);
         SqlCommand seekStars = new SqlCommand("select * from stars where color=@starColor and size>@minSize and size<@maxSize", entry);
         SqlDataReader reader = null;
         /*

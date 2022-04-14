@@ -14,7 +14,7 @@ public class ModifyOrDelete{
         Console.WriteLine("Please input the ID of the star you wish to access and press the Enter key.");
         string IDnum = Console.ReadLine();
 
-        SqlConnection entry = new SqlConnection(@"server=DESKTOP-5M7ISTP\JUSTIN_INSTANCE;database=StarMapDB;User Id=" + Login.username + ";Password=" + Login.password + ";");
+        SqlConnection entry = new SqlConnection(Login.connection);
         SqlCommand nameStar = new SqlCommand("update stars set name = @name where id=@idno", entry);
         SqlCommand xStar = new SqlCommand("update stars set x = @x where id=@idno", entry);
         SqlCommand yStar = new SqlCommand("update stars set y = @y where id=@idno", entry);

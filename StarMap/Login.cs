@@ -2,12 +2,17 @@ using System;
 using System.Data.SqlClient;
 
 public class Login{
-
-    public static string username;
-    public static string password;
+    public static string connection;
     public static void execute(){
         bool exitLoop = false;
+        var reader = new System.Xml.Serialization.XmlSerializer(typeof(String));
+        var file = new System.IO.StreamReader(@".\ConnectionString.xml");
+        string c = (String)reader.Deserialize(file);
+        file.Close();
+        string username;
+        string password;
         while(!exitLoop){
+
             Console.Clear();
             Console.WriteLine("Input your username and press the enter key.");
             username = Console.ReadLine();
@@ -16,7 +21,9 @@ public class Login{
             password = Console.ReadLine();
             Console.Clear();
 
-            SqlConnection entry = new SqlConnection(@"server=DESKTOP-5M7ISTP\JUSTIN_INSTANCE;database=StarMapDB;User Id=" + Login.username + ";Password=" + Login.password + ";");
+            Login.connection = c + "User Id=" + username + ";Password=" + password + ";";
+
+            SqlConnection entry = new SqlConnection(Login.connection);
             SqlCommand loginCount = new SqlCommand("select count(*) from stars", entry);
             
             try{

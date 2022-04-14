@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 public class SqlTableEntry{
 
     public static void execute(string name, double x, double y, double z, double size, string color){
-        SqlConnection entry = new SqlConnection(@"server=DESKTOP-5M7ISTP\JUSTIN_INSTANCE;database=StarMapDB;User Id=" + Login.username + ";Password=" + Login.password + ";");
+        SqlConnection entry = new SqlConnection(Login.connection);
         SqlCommand addStar = new SqlCommand("insert into stars (name, x, y, z, size, color) values (@name, @x, @y, @z, @size, @color);", entry);
         addStar.Parameters.AddWithValue("@name", name);
         addStar.Parameters.AddWithValue("@x", x);

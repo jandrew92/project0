@@ -3,7 +3,7 @@ using System.Data.SqlClient;
 
 public class StarStatistics{
     public static void execute(){
-            SqlConnection entry = new SqlConnection(@"server=DESKTOP-5M7ISTP\JUSTIN_INSTANCE;database=StarMapDB;User Id=" + Login.username + ";Password=" + Login.password + ";");
+            SqlConnection entry = new SqlConnection(Login.connection);
             SqlCommand readStar = new SqlCommand("select * from stars", entry);
             SqlDataReader reader = null;
 

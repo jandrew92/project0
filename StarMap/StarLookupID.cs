@@ -9,7 +9,7 @@ public class StarLookupID{
             Console.WriteLine("Please input the ID Number of the star you wish to look up.");
             string IDnum = Console.ReadLine();
             
-            SqlConnection entry = new SqlConnection(@"server=DESKTOP-5M7ISTP\JUSTIN_INSTANCE;database=StarMapDB;User Id=" + Login.username + ";Password=" + Login.password + ";");
+            SqlConnection entry = new SqlConnection(Login.connection);
             SqlCommand readStar = new SqlCommand("select * from stars where id=@idno", entry);
             readStar.Parameters.AddWithValue("@idno", IDnum);
             SqlDataReader reader = null;
@@ -57,7 +57,7 @@ public class StarLookupID{
     public static void execute(string IDnum){
         bool exitLoop = false;
         while(!exitLoop){            
-            SqlConnection entry = new SqlConnection(@"server=DESKTOP-5M7ISTP\JUSTIN_INSTANCE;database=StarMapDB;User Id=" + Login.username + ";Password=" + Login.password + ";");
+            SqlConnection entry = new SqlConnection(Login.connection);
             SqlCommand readStar = new SqlCommand("select * from stars where id=@idno", entry);
             readStar.Parameters.AddWithValue("@idno", IDnum);
             SqlDataReader reader = null;
